@@ -1,0 +1,42 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: release/2.0.0
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    gitlab.cern.ch/fts/fts3:
+      branch: develop
+      repo: https://gitlab.cern.ch/fts/fts3
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      gitlab.cern.ch/fts/fts3 git:
+        commands:
+        - /usr/bin/env sh .sqa/script.frumpy-amber-mastiff.sh
+        container: qc.acc_cloudy-jade-robin
+  QC.Doc:
+    repos:
+      gitlab.cern.ch/fts/fts3 find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.squeaky-flax-malamute.sh
+        container: qc.doc_snazzy-purple-setter
+      gitlab.cern.ch/fts/fts3 git:
+        commands:
+        - /usr/bin/env sh .sqa/script.beady-russet-worm.sh
+        container: qc.doc_gimpy-orange-gar
+  QC.Lic:
+    repos:
+      gitlab.cern.ch/fts/fts3 licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.hilly-amaranth-impala.sh
+        container: qc.lic_snoopy-scarlet-argentino
+  QC.Ver:
+    repos:
+      gitlab.cern.ch/fts/fts3 get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.shaky-eggplant-opossum.sh
+        container: qc.ver_lanky-crimson-mongoose
+timeout: 5400
