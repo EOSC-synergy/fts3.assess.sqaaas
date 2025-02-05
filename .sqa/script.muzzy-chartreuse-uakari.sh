@@ -5,5 +5,5 @@
 
 (
 cd gitlab.cern.ch/fts/fts3 &&
-    licensee detect . --confidence 60 --json
+    oclint  -- -c
 )

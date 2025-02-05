@@ -2,7 +2,7 @@ config:
   credentials: []
   project_repos:
     github.com/EOSC-synergy/sqaaas-tooling:
-      branch: release/2.0.0
+      branch: main
       repo: https://github.com/EOSC-synergy/sqaaas-tooling
     gitlab.cern.ch/fts/fts3:
       branch: develop
@@ -15,28 +15,62 @@ sqa_criteria:
     repos:
       gitlab.cern.ch/fts/fts3 git:
         commands:
-        - /usr/bin/env sh .sqa/script.frumpy-amber-mastiff.sh
-        container: qc.acc_cloudy-jade-robin
+        - /usr/bin/env sh .sqa/script.cheeky-taupe-labradoodle.sh
+        container: qc.acc_silly-tomato-dingo
   QC.Doc:
     repos:
       gitlab.cern.ch/fts/fts3 find_doc_files.py:
         commands:
-        - /usr/bin/env sh .sqa/script.squeaky-flax-malamute.sh
-        container: qc.doc_snazzy-purple-setter
+        - /usr/bin/env sh .sqa/script.seedy-chartreuse-dugong.sh
+        container: qc.doc_pokey-magnolia-panda
       gitlab.cern.ch/fts/fts3 git:
         commands:
-        - /usr/bin/env sh .sqa/script.beady-russet-worm.sh
-        container: qc.doc_gimpy-orange-gar
+        - /usr/bin/env sh .sqa/script.stinky-flax-worm.sh
+        container: qc.doc_grumpy-ecru-yak
+      gitlab.cern.ch/fts/fts3 markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.gimpy-grey-fousek.sh
+        container: qc.doc_chummy-auburn-chow
   QC.Lic:
     repos:
       gitlab.cern.ch/fts/fts3 licensee:
         commands:
-        - /usr/bin/env sh .sqa/script.hilly-amaranth-impala.sh
-        container: qc.lic_snoopy-scarlet-argentino
+        - /usr/bin/env sh .sqa/script.homely-cobalt-peccary.sh
+        container: qc.lic_stuffy-salmon-cheetah
+  QC.Sec:
+    repos:
+      gitlab.cern.ch/fts/fts3 bandit:
+        commands:
+        - /usr/bin/env sh .sqa/script.skanky-pink-bulldog.sh
+        container: qc.sec_slimy-chestnut-wolf
+  QC.Sty:
+    repos:
+      gitlab.cern.ch/fts/fts3 flake8:
+        commands:
+        - /usr/bin/env sh .sqa/script.hasty-ultramarine-magpie.sh
+        container: qc.sty_stinky-mauve-axolotl
+      gitlab.cern.ch/fts/fts3 hadolint:
+        commands:
+        - /usr/bin/env sh .sqa/script.greasy-brown-collie.sh
+        container: qc.sty_seedy-salmon-neanderthal
+      gitlab.cern.ch/fts/fts3 oclint:
+        commands:
+        - /usr/bin/env sh .sqa/script.muzzy-chartreuse-uakari.sh
+        container: qc.sty_lousy-pear-corgi
+      gitlab.cern.ch/fts/fts3 rubocop:
+        commands:
+        - /usr/bin/env sh .sqa/script.leaky-sangria-chipmunk.sh
+        container: qc.sty_snoopy-indigo-beagle
+  QC.Uni:
+    repos:
+      gitlab.cern.ch/fts/fts3 pytest:
+        commands:
+        - /usr/bin/env sh .sqa/script.crabby-platinum-saola.sh
+        container: qc.uni_pretty-blue-devil
   QC.Ver:
     repos:
       gitlab.cern.ch/fts/fts3 get_git_tags.py:
         commands:
-        - /usr/bin/env sh .sqa/script.shaky-eggplant-opossum.sh
-        container: qc.ver_lanky-crimson-mongoose
+        - /usr/bin/env sh .sqa/script.sleazy-wheat-molly.sh
+        container: qc.ver_smelly-razzmatazz-hyena
 timeout: 5400

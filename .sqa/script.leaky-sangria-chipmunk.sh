@@ -5,5 +5,5 @@
 
 (
 cd gitlab.cern.ch/fts/fts3 &&
-    git rev-parse --is-inside-work-tree
+    rubocop
 )
